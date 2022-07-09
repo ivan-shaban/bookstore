@@ -22,7 +22,6 @@ export const BookPage: FC<Props> = memo(function BookPage({
         <PageLayout
             seoTitle={`Книжная лавка Тумас, книга "${title}"`}
             seoDescription={shortDescription}
-            className={styles.base}
         >
             <div className={styles.content}>
                 <img

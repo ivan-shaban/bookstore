@@ -6,8 +6,6 @@ import { Button, Card } from 'react-bootstrap'
 
 import { $bookSeries } from '../../../models/bookSeries'
 import { $contacts } from '../../../models/contacts'
-import { $feedbacks } from '../../../models/feedback'
-import { $news } from '../../../models/news'
 import { pagesPath, staticPath } from '../../../utils/$path'
 import { PageLayout } from '../../PageLayout/PageLayout'
 
@@ -17,8 +15,8 @@ export interface Props {}
 
 export const Home: NextPage<Props> = (props) => {
     const bookSeries = useStore($bookSeries)
-    const feedbacks = useStore($feedbacks)
-    const news = useStore($news)
+    // const feedbacks = useStore($feedbacks)
+    // const news = useStore($news)
     const { catchphrase } = useStore($contacts)
     const router = useRouter()
     const handleBookNavigationClick = useCallback(
@@ -30,7 +28,7 @@ export const Home: NextPage<Props> = (props) => {
     )
 
     return (
-        <PageLayout seoTitle="Книжная лавка Тумас" seoDescription="Home" className={styles.base}>
+        <PageLayout seoTitle="Книжная лавка Тумас" seoDescription="Home">
             <div className="rounded-3 mb-4 overflow-hidden" style={{ height: 400 }}>
                 <img
                     className={styles.headerBackground}

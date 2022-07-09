@@ -1,8 +1,6 @@
 import { NextPage } from 'next'
-import { useRouter } from 'next/router'
-import React, { memo, useCallback } from 'react'
+import React, { memo } from 'react'
 
-import { pagesPath } from '../../../utils/$path'
 import { PageLayout } from '../../PageLayout/PageLayout'
 import { Text, TextColors, TextVariant } from '../../Text/Text'
 import { NewsEntity } from '@prisma/client'
@@ -16,11 +14,6 @@ export interface Props {
 
 export const NewsEntityPage: NextPage<Props> = memo(
     ({ newsEntity: { title, content, createdAt } }) => {
-        const router = useRouter()
-        const handleBackClick = useCallback(() => {
-            router.push(pagesPath.news.$url())
-        }, [router])
-
         return (
             <PageLayout seoTitle="Step Invest: NEWS" seoDescription="News page">
                 <div className={styles.base}>

@@ -11,16 +11,14 @@ import { pagesPath, staticPath } from '../../utils/$path'
 import styles from './PageLayout.module.scss'
 
 export interface Props {
-    readonly className?: string
     readonly seoTitle: string
     readonly seoDescription: string
 }
 
 export const PageLayout: FC<PropsWithChildren<Props>> = memo(
-    ({ children, seoTitle, seoDescription, className }) => {
+    ({ children, seoTitle, seoDescription }) => {
         const baseClasses = classNames(styles.base, styles.base__stretched)
-        const { facebook, instagram, twitter, telegram, vkontakte, catchphrase } =
-            useStore($contacts)
+        const { facebook, instagram, twitter, telegram } = useStore($contacts)
 
         return (
             <div className={baseClasses}>

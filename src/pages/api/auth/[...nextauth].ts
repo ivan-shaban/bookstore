@@ -3,7 +3,6 @@ import NextAuth, { NextAuthOptions } from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 
 import prisma from '../../../lib/prisma'
-import { pagesPath } from '../../../utils/$path'
 import faker from '@faker-js/faker'
 
 export const authOptions: NextAuthOptions = {
