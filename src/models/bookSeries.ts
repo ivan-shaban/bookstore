@@ -1,6 +1,10 @@
 import { apiClient } from '../lib/apiClient'
-import { BookSeries } from '@prisma/client'
+import { Book, BookSeries as BookSeriesOrigin } from '@prisma/client'
 import { createEffect, createStore } from 'effector'
+
+export type BookSeries = BookSeriesOrigin & {
+    books: Book[]
+}
 
 export const requestAllBookSeriesFx = createEffect({
     name: 'request all book series',

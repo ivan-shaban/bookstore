@@ -1,12 +1,7 @@
 .base {
-    position: relative;
-    //background-color: rebeccapurple;
 }
 
 .headerImage {
-    position: absolute;
-    top: 0;
-    left: 0;
     min-height: 240px;
 }
 
@@ -34,27 +29,5 @@
 
 .content {
     display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin: calc(240px + 32px) 32px 32px;
-    //background-color: cadetblue;
-
-    &_header {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
-    }
-
-    &_values {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    &_value {
-        display: flex;
-        align-items: center;
-        margin-top: 6px;
-    }
+    flex-direction: row;
 }

@@ -6,9 +6,31 @@
 }
 
 .headerBackground {
-    position: absolute;
-    top: 56px;
     width: 100%;
-    height: 400px;
+    height: 100%;
+}
 
+.seriesItem {
+    list-style-type: none;
+}
+
+.booksList {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5%;
+    row-gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    & > * {
+        width: 30%;
+    }
+}
+
+.bookCard {
+    &_body {
+        display: flex;
+        flex-direction: column;
+    }
 }
