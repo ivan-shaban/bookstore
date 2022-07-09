@@ -1,0 +1,79 @@
+.base {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+
+    &__colorPrimary {
+        color: #272727;
+    }
+
+    &__colorSecondary {
+        color: #E08043;
+    }
+
+    &__colorWhite {
+        color: #FFF;
+    }
+
+    &__colorGrey {
+        color: #606060;
+    }
+
+    &__colorMidGrey {
+        color: #ACACAD;
+    }
+
+    &__colorSuccess {
+        color: #1EC589;
+    }
+
+    &__colorDanger {
+        color: #CF2F4C;
+    }
+
+    &__regular {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 142%;
+        font-feature-settings: 'tnum' on, 'lnum' on;
+    }
+
+    &__regularBold {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 129.4%;
+        letter-spacing: 0.03em;
+    }
+
+    &__subtitle {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    &__label {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    &__description {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 142%;
+    }
+
+    &__header {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: -0.5px;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 30px;
+        letter-spacing: -0.5px;
+    }
+}

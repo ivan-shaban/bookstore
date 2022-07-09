@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    "effector"
+  ],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:effector/recommended",
+    "plugin:effector/react",
+    "plugin:effector/scope"
+  ],
+  "rules": {
+    "import/no-anonymous-default-export": 0,
+    "jsx-a11y/anchor-is-valid": 0
+  }
+}

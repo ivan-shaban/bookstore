@@ -1,0 +1,12 @@
+.horizontal {
+    width: 1px;
+    background: #E5E4E7;
+    margin: 6px 0;
+}
+
+.vertical {
+    // otherwise it may be invisible %(
+    height: 2px;
+    background: #E5E4E7;
+    margin: 0 6px;
+}
