@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "prisma:init": "npx prisma db push && npx prisma db seed",
+    "prisma:init": "npx prisma db push --force-reset && npx prisma db seed",
     "prisma:format": "npx prisma format",
     "postprisma:format": "yarn prisma:generate-client",
     "prisma:generate-client": "npx prisma generate",

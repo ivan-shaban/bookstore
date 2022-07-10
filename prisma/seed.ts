@@ -29,7 +29,7 @@ async function createBookSeries() {
                                 .map(() => ({
                                     title: faker.hacker.phrase(),
                                     rating: faker.datatype.number({ min: 4, max: 5, precision: 1 }),
-                                    previewImage: faker.random.image(),
+                                    previewImage: faker.image.image(300, 400, true),
                                     shortDescription: faker.lorem.lines(2),
                                     longDescription: faker.lorem.lines(10),
                                 })),
