@@ -43,7 +43,7 @@ export const Home: NextPage<Props> = ({ news, feedbacks, bookSeries, contacts })
                         <h4 className="text-center">Серия: {title}</h4>
                         <div className={styles.booksList}>
                             {books.map((book) => (
-                                <Card className={styles.bookCard}>
+                                <Card className={styles.bookCard} key={book.id}>
                                     <Card.Img variant="top" src={book.previewImage} />
                                     <Card.Body className={styles.bookCard_body}>
                                         <Card.Title>{book.title}</Card.Title>
