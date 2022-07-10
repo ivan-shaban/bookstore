@@ -1,8 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next/types'
 
-import { Props } from '../../components/pages/Home/Home'
-import { NewsEntityPage } from '../../components/pages/NewsEntity/NewsEntityPage'
-import { newsController } from '../../server/controllers'
+import { NewsEntityPage, Props } from '../../components/pages/NewsEntity/NewsEntityPage'
+import { contactsController, newsController } from '../../server/controllers'
 import { serializeDate } from '../../utils/prisma'
 
 export default NewsEntityPage
@@ -21,10 +20,12 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) => {
     const newsId = params?.id!
     const newsEntity = await newsController.getById(newsId)
+    const contacts = await contactsController.getEntity()
 
     return {
         props: {
             newsEntity: serializeDate(newsEntity!),
+            contacts: serializeDate(contacts!),
         },
     }
 }

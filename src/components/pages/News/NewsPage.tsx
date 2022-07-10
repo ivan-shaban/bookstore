@@ -5,16 +5,17 @@ import React, { MouseEvent, memo, useCallback } from 'react'
 import { pagesPath } from '../../../utils/$path'
 import { PageLayout } from '../../PageLayout/PageLayout'
 import { Text, TextColors, TextVariant } from '../../Text/Text'
-import { NewsEntity } from '@prisma/client'
+import { AuthorContacts, NewsEntity } from '@prisma/client'
 import moment from 'moment'
 
 import styles from './NewsPage.module.scss'
 
 export interface Props {
+    readonly contacts: AuthorContacts
     readonly news: NewsEntity[]
 }
 
-export const NewsPage: NextPage<Props> = memo(({ news }) => {
+export const NewsPage: NextPage<Props> = memo(({ news, contacts }) => {
     const router = useRouter()
     const handleNewsEntityClick = useCallback(
         (event: MouseEvent<HTMLDivElement>) => {
@@ -25,7 +26,11 @@ export const NewsPage: NextPage<Props> = memo(({ news }) => {
     )
 
     return (
-        <PageLayout seoTitle="Книжная лавка Тумас, новости" seoDescription="News page">
+        <PageLayout
+            seoTitle="Книжная лавка Тумас, новости"
+            seoDescription="News page"
+            contacts={contacts}
+        >
             <div className={styles.base}>
                 {news.map(({ id, shortTitle, createdAt }) => (
                     <div

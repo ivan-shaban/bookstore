@@ -4,11 +4,12 @@ import classNames from 'classnames'
 
 import { PageLayout } from '../../PageLayout/PageLayout'
 import { Text, TextVariant } from '../../Text/Text'
-import { Book, BookSeries, FeedbackEntity } from '@prisma/client'
+import { AuthorContacts, Book, BookSeries, FeedbackEntity } from '@prisma/client'
 
 import styles from './BookPage.module.scss'
 
 export interface Props {
+    readonly contacts: AuthorContacts
     readonly book: Book & {
         readonly series: BookSeries
         readonly feedbacks: FeedbackEntity[]
@@ -16,10 +17,12 @@ export interface Props {
 }
 
 export const BookPage: FC<Props> = memo(function BookPage({
+    contacts,
     book: { id, title, rating, shortDescription, longDescription, previewImage, series, feedbacks },
 }) {
     return (
         <PageLayout
+            contacts={contacts}
             seoTitle={`Книжная лавка Тумас, книга "${title}"`}
             seoDescription={shortDescription}
         >

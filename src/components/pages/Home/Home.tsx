@@ -1,23 +1,23 @@
-import { useStore } from 'effector-react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React, { MouseEvent, useCallback } from 'react'
 import { Button, Card } from 'react-bootstrap'
 
-import { $bookSeries } from '../../../models/bookSeries'
-import { $contacts } from '../../../models/contacts'
+import { BookSeries } from '../../../models/bookSeries'
 import { pagesPath, staticPath } from '../../../utils/$path'
 import { PageLayout } from '../../PageLayout/PageLayout'
+import { AuthorContacts, FeedbackEntity, NewsEntity } from '@prisma/client'
 
 import styles from './Home.module.scss'
 
-export interface Props {}
+export interface Props {
+    readonly contacts: AuthorContacts
+    readonly bookSeries: BookSeries[]
+    readonly feedbacks: FeedbackEntity[]
+    readonly news: NewsEntity[]
+}
 
-export const Home: NextPage<Props> = (props) => {
-    const bookSeries = useStore($bookSeries)
-    // const feedbacks = useStore($feedbacks)
-    // const news = useStore($news)
-    const { catchphrase } = useStore($contacts)
+export const Home: NextPage<Props> = ({ news, feedbacks, bookSeries, contacts }) => {
     const router = useRouter()
     const handleBookNavigationClick = useCallback(
         (event: MouseEvent<HTMLButtonElement>) => {
@@ -28,7 +28,7 @@ export const Home: NextPage<Props> = (props) => {
     )
 
     return (
-        <PageLayout seoTitle="Книжная лавка Тумас" seoDescription="Home">
+        <PageLayout seoTitle="Книжная лавка Тумас" seoDescription="Home" contacts={contacts}>
             <div className="rounded-3 mb-4 overflow-hidden" style={{ height: 400 }}>
                 <img
                     className={styles.headerBackground}
@@ -64,7 +64,7 @@ export const Home: NextPage<Props> = (props) => {
                 ))}
             </ul>
             <hr />
-            <h3 className="text-center">{catchphrase}</h3>
+            <h3 className="text-center">{contacts.catchphrase}</h3>
         </PageLayout>
     )
 }

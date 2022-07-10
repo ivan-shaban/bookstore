@@ -1,24 +1,28 @@
-import { useStore } from 'effector-react'
 import Head from 'next/head'
 import React, { FC, PropsWithChildren, memo } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 
 import classNames from 'classnames'
 
-import { $contacts } from '../../models/contacts'
 import { pagesPath, staticPath } from '../../utils/$path'
+import { AuthorContacts } from '@prisma/client'
 
 import styles from './PageLayout.module.scss'
 
 export interface Props {
+    readonly contacts: AuthorContacts
     readonly seoTitle: string
     readonly seoDescription: string
 }
 
 export const PageLayout: FC<PropsWithChildren<Props>> = memo(
-    ({ children, seoTitle, seoDescription }) => {
+    ({
+        children,
+        seoTitle,
+        seoDescription,
+        contacts: { facebook, instagram, twitter, telegram },
+    }) => {
         const baseClasses = classNames(styles.base, styles.base__stretched)
-        const { facebook, instagram, twitter, telegram } = useStore($contacts)
 
         return (
             <div className={baseClasses}>
@@ -44,16 +48,16 @@ export const PageLayout: FC<PropsWithChildren<Props>> = memo(
                             <Nav.Link href={pagesPath.$url().pathname}>Отзывы</Nav.Link>
                         </Nav>
                         <Nav>
-                            <Nav.Link href={instagram}>
+                            <Nav.Link href={instagram} target="_blank">
                                 <i className="bi bi-instagram" />
                             </Nav.Link>
-                            <Nav.Link href={facebook}>
+                            <Nav.Link href={facebook} target="_blank">
                                 <i className="bi bi-facebook" />
                             </Nav.Link>
-                            <Nav.Link href={telegram}>
+                            <Nav.Link href={telegram} target="_blank">
                                 <i className="bi bi-telegram" />
                             </Nav.Link>
-                            <Nav.Link href={twitter}>
+                            <Nav.Link href={twitter} target="_blank">
                                 <i className="bi bi-twitter" />
                             </Nav.Link>
                         </Nav>
