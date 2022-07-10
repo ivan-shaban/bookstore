@@ -1,16 +1,13 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-// TODO: check for https://github.com/prisma-utils/prisma-utils/tree/main/libs/prismerge
 model Account {
   id                       String  @id @default(cuid())
   userId                   String
@@ -18,15 +15,14 @@ model Account {
   provider                 String
   providerAccountId        String
   refresh_token_expires_in Int?
-  refresh_token            String? @db.Text
-  access_token             String? @db.Text
+  refresh_token            String?
+  access_token             String?
   expires_at               Int?
   token_type               String?
   scope                    String?
-  id_token                 String? @db.Text
+  id_token                 String?
   session_state            String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -56,8 +52,8 @@ model User {
   email         String           @unique
   emailVerified DateTime?
   accounts      Account[]
-  sessions      Session[]
   feedbacks     FeedbackEntity[]
+  sessions      Session[]
 }
 
 /// Контакты автора
@@ -75,24 +71,22 @@ model BookSeries {
   id        String           @id @default(cuid())
   createdAt DateTime         @default(now())
   title     String
-  books     Book[]
   rating    Float
+  books     Book[]
   feedbacks FeedbackEntity[]
 }
 
-// TODO: добавить разные бэйджи, типа НОВОЕ, ВЫБОР ЧИТАТЕЛЕЙ и т.д.
 model Book {
-  id               String   @id @default(cuid())
-  createdAt        DateTime @default(now())
+  id               String           @id @default(cuid())
+  createdAt        DateTime         @default(now())
   title            String
   rating           Float
   previewImage     String
   shortDescription String
   longDescription  String
-
-  seriesId  String
-  series    BookSeries       @relation(fields: [seriesId], references: [id], onDelete: Cascade)
-  feedbacks FeedbackEntity[]
+  seriesId         String
+  series           BookSeries       @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+  feedbacks        FeedbackEntity[]
 }
 
 model FeedbackEntity {
@@ -102,10 +96,10 @@ model FeedbackEntity {
   title     String
   message   String
   seriesId  String?
-  series    BookSeries? @relation(fields: [seriesId], references: [id])
   bookId    String?
-  book      Book?       @relation(fields: [bookId], references: [id])
   userId    String
+  book      Book?       @relation(fields: [bookId], references: [id])
+  series    BookSeries? @relation(fields: [seriesId], references: [id])
   user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
