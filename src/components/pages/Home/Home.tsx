@@ -3,6 +3,8 @@ import { useRouter } from 'next/router'
 import React, { MouseEvent, useCallback } from 'react'
 import { Button, Card } from 'react-bootstrap'
 
+import classNames from 'classnames'
+
 import { BookSeries } from '../../../models/bookSeries'
 import { pagesPath, staticPath } from '../../../utils/$path'
 import { PageLayout } from '../../PageLayout/PageLayout'
@@ -37,16 +39,15 @@ export const Home: NextPage<Props> = ({ news, feedbacks, bookSeries, contacts })
                 />
             </div>
             <h1 className="text-center">Книги</h1>
-            <ul className="mb-4">
+            <ul className="mb-4 p-0">
                 {bookSeries.map(({ id, title, rating, books }) => (
                     <li className={styles.seriesItem} key={id}>
                         <h4 className="text-center">Серия: {title}</h4>
-                        <div className={styles.booksList}>
+                        <div className={classNames(styles.booksList)}>
                             {books.map((book) => (
                                 <Card className={styles.bookCard} key={book.id}>
                                     <Card.Img variant="top" src={book.previewImage} />
                                     <Card.Body className={styles.bookCard_body}>
-                                        <Card.Title>{book.title}</Card.Title>
                                         <Card.Text>{book.shortDescription}</Card.Text>
                                         <Button
                                             variant="primary"

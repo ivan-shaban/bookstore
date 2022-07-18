@@ -16,6 +16,7 @@ export const pagesPath = {
 export type PagesPath = typeof pagesPath
 
 export const staticPath = {
+  _nojekyll: '/.nojekyll',
   favicon_ico: '/favicon.ico',
   images: {
     home_header_background_jpg: '/images/home-header-background.jpg',
