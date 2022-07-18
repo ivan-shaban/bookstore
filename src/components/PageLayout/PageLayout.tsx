@@ -42,12 +42,12 @@ export const PageLayout: FC<PropsWithChildren<Props>> = memo(
                             />{' '}
                             Книжная лавка Тумас
                         </Navbar.Brand>
-                        <Nav className="me-auto">
+                        <Nav className="me-auto d-none d-sm-flex">
                             <Nav.Link href={pagesPath.$url().pathname}>Книги</Nav.Link>
                             <Nav.Link href={pagesPath.news.$url().pathname}>Новости</Nav.Link>
                             <Nav.Link href={pagesPath.$url().pathname}>Отзывы</Nav.Link>
                         </Nav>
-                        <Nav>
+                        <Nav className="d-none d-md-flex">
                             <Nav.Link href={instagram} target="_blank">
                                 <i className="bi bi-instagram" />
                             </Nav.Link>
